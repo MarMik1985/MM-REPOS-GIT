@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- SEO optimalization -->
+    <title>Entry task for  UI Developer</title>
+    <meta name="description" content="Entry task for  UI Developer">
+    <link rel="canonical" href="">
+    <meta name="author" content="Marek Mikudík">
+
+   <!--jQuery CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Angular-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+   <!--bootstrap CDN-->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!--Google fonts and Font Awesome-->
+     
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800&amp;subset=latin-ext" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <!--custom CSS-->
+        <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 heading-1">
+               <h1>Entry task for  UI Developer</h1> 
+        </div>
+
+        <div col-xs-12>
+            <table id="population_table" class="table table-bordered">
+                <caption>Population of Slovakia in 1990</caption>
+                    <tr>
+                        <th>Age</th>
+                        <th>Males</th>
+                        <th>Females</th>
+                        <th>Total</th>   
+                    </tr>
+            </table>  
+        </div>
+
+
+        <div  id="chartContainer"></div>
+
+        <div class="col-xs-12 heading-2">
+               <h1>Life expectancy</h1> 
+        </div>
+
+        <div>
+            <ul id="expectancy-inputs" class="col-xs-4 col-md-4">
+                <li>Sex</li>
+                <li>Country </li>
+                <li>Date </li>
+                <li>Age </li>
+            </ul>
+            <div id="expectancy-rectangles" class="col-xs-8 col-md-8">
+                <div><input type="text" name="Sex"></div>
+                <div><input type="text" name="Country"></div>
+                <div><input type="text" name="Date"></div>
+                <div><input type="text" name="Age"></div>
+            </div> 
+                
+            
+            <div id="life-expectancy" class="col-xs-12">
+                <button type="">Life expectancy</button>
+                <div>
+                    <input type="text" name="Life-expectancy" placeholder="click the button">
+                </div>
+            </div>
+        </div>
+     </div>        
+</div>
+
+<script>
+    var tab = [
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/18/',
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/19/',
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/20/',
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/21/',
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/22/',
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/23/',
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/24/',
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/25/',
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/26/',
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/27/',
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/28/',
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/29/',
+            'http://api.population.io:80/1.0/population/1990/Slovak%20Republic/30/'
+        ]; 
+
+        $.each(tab, function(index, value) {
+
+            $.ajax({
+                url: value,
+                type:'GET',
+                dataType: 'json'
+
+            }).done(function(data){
+                console.log(data);
+                var udaje = (data);
+
+      $.each(data, function(key, value){
+          udaje += '<tr>';
+          udaje += '<td>'+value.age+'</td>';
+          udaje += '<td>'+value.males+'</td>';
+          udaje += '<td>'+value.females+'</td>';
+          var total = value.males+value.females;
+          udaje += '<td>'+value.total+'</td>';
+          udaje += '</tr>';
+
+      });
+            $('#population_table').append(udaje);
+          }); 
+      });   
+
+</script>
+
+<script>
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+      title:{
+      text: "Population of Slovakia in 1990"
+      },
+      data: [
+      {
+        bevelEnabled: true,
+        type: "column",
+        showInLegend: true,
+        legendText: "males",
+        dataPoints: [
+        { x: 18, y: 42700 },
+        { x: 19, y: 41000 },
+        { x: 20, y: 39300 },
+        { x: 21, y: 37600 },
+        { x: 22, y: 36600 },
+        { x: 23, y: 36700 },
+        { x: 24, y: 37500 },
+        { x: 25, y: 38300 },
+        { x: 26, y: 39200 },
+        { x: 27, y: 40000 },
+        { x: 28, y: 40700 },
+        { x: 29, y: 41300 },
+        { x: 30, y: 42000 }
+
+        ]
+      },
+
+      {
+        bevelEnabled: true,
+        type: "column",
+        showInLegend: true,
+        legendText: "females",
+        dataPoints: [
+        { x: 18, y: 41000 },
+        { x: 19, y: 39400 },
+        { x: 20, y: 37900 },
+        { x: 21, y: 36200 },
+        { x: 22, y: 35300 },
+        { x: 23, y: 35400 },
+        { x: 24, y: 36200 },
+        { x: 25, y: 37000 },
+        { x: 26, y: 37900 },
+        { x: 27, y: 38700 },
+        { x: 28, y: 39500 },
+        { x: 29, y: 40100 },
+        { x: 30, y: 40800 }
+
+        ]
+      },
+
+      {
+        bevelEnabled: true,
+        type: "column",
+         showInLegend: true,
+        legendText: "total",
+        dataPoints: [
+        { x: 18, y: 83700 },
+        { x: 19, y: 80400 },
+        { x: 20, y: 77200 },
+        { x: 21, y: 73800 },
+        { x: 22, y: 71900 },
+        { x: 23, y: 72100 },
+        { x: 24, y: 73700 },
+        { x: 25, y: 75300 },
+        { x: 26, y: 77100 },
+        { x: 27, y: 78700 },
+        { x: 28, y: 80200 },
+        { x: 29, y: 81400 },
+        { x: 30, y: 82800 }
+        ]
+      }
+      ]
+    });
+
+    chart.render();
+  }
+</script>
+
+<script>
+var tab = [
+            'http://api.population.io:80/1.0/life-expectancy/remaining/male/Slovak%20Republic/2001-05-11/50y2m/'
+        ];
+
+        $.each(tab, function(index, value) {
+
+            $.ajax({
+                url: value,
+                type:'GET',
+                dataType: 'json'
+
+            }).done(function(data){
+                console.log(data);
+                var udaje = (data);
+
+      $.each(data, function(key, value){
+          udaje += '<tr>';
+          udaje += '<td>'+value.sex+'</td>';
+          udaje += '<td>'+value.country+'</td>';
+          udaje += '<td>'+value.date+'</td>';
+          udaje += '<td>'+value.age+'</td>';
+          udaje += '</tr>';
+
+      });
+            $('#life_expentancy_table').append(udaje);
+          }); 
+      });   
+
+</script>
+
+<script  type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js">
+</script>
+
+</body>
+</html>

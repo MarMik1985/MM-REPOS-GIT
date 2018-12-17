@@ -1,0 +1,193 @@
+/* General */
+html, body {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #fff;
+}
+
+body {
+  color: #000;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  background-color: #313131;
+}
+
+p {
+  font-size: 16px;
+  color: #000;
+}
+
+.heading-1 h1{
+	color: #D3D3D3;
+	text-align: center;
+	text-decoration: underline;
+	font-size: 28px;
+}
+
+/* --- table --- */
+
+.table{
+	color: whitesmoke;
+	border:3px solid white;
+	border-radius: 6px;
+	background-color: #464646;
+}
+
+.table caption{
+	color:#CBCBCB;
+	font-size: 32px;
+	text-align: center;
+	font-weight: 700;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+th{
+	text-align: center;
+}
+
+td:first-child{
+	font-weight: 400;	
+	font-size: 18px;
+	font-weight: 700;	
+	background-color: #2A2A2A;
+	color:#C6C6C6;
+}
+
+
+tr{
+  padding: 15px;
+  text-align: center;
+}
+
+tr:first-child{
+  background-color: #2A2A2A;
+	color:#C6C6C6;
+}
+
+#chartContainer{
+	margin: 40px 0 20px 0;	
+	text-align: center;
+	height: 500px; 
+	max-width: 100%;
+}
+
+.canvasjs-chart-container{
+	border-radius: 10px;
+	font-size: 20px;
+}
+
+
+a.canvasjs-chart-credit{
+  display: none;
+}
+
+/*--CHART--*/
+
+#chart-legend{
+	text-align: center;
+}
+
+#chart-legend p{
+	display: inline-block;
+	padding: 10px 15px;
+	border-radius: 6px;
+	color: #fff;
+	font-size: 18px;
+	margin: 0 20px 20px 20px;
+}
+
+#chart-legend p:first-child{
+	background-color: rgb(79, 129, 188) ;
+}
+
+#chart-legend p:nth-child(2){
+	background-color: rgb(192, 80, 78);
+}
+
+#chart-legend p:nth-child(3){
+	background-color: rgb(155, 187, 88);
+	}
+
+/*--CALCULATOR--*/
+
+.heading-2{
+	border-top: 2px solid #CBCBCB;
+	margin-top: 20px
+}
+
+.heading-2 h1{
+	color:#CBCBCB;
+	font-size: 32px;
+	text-align: center;
+	font-weight: 700;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#expectancy-inputs{
+	text-align: center;
+	color:#C6C6C6;
+	list-style:none;
+	margin: 0;
+	margin-top: 20px;
+}
+
+#expectancy-inputs li{
+	padding: 3px 2px;
+	list-style:none;
+}
+
+#expectancy-rectangles {
+	text-align: left;
+	list-style:none;
+	margin-top: 20px;
+	padding-left: 80px;
+}
+
+#expectancy-inputs input{
+	padding:  20px;
+	color:#000;
+	font-weight: 700;
+}
+
+#life-expectancy{
+	text-align: center;
+	color:#C6C6C6;
+	font-weight: 700;
+	font-size: 20px;
+	padding-bottom: 40px;
+	padding-top: 20px;
+}
+
+#life-expectancy button{
+	color:#000;
+	background-color: #AFB8FC;
+	font-weight: 700;
+	font-size: 18px;
+	margin-bottom: 20px;
+	border-radius:12px;
+	padding: 5px 10px;
+}
+#life-expectancy input{
+	color:#000;
+	font-weight: 700;
+	font-size: 16px;
+	text-align: center;
+}
+
+@media (max-width: 991px)
+	{
+		#expectancy-rectangles {
+	
+	padding-left: 15px;
+}
+	}	
+
